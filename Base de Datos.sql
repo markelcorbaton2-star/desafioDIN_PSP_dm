@@ -62,6 +62,7 @@ CREATE TABLE Empleados (
 
 CREATE TABLE Pedidos (
 	id_pedido INT PRIMARY KEY auto_increment,
+    nombre VARCHAR(100) NOT NULL,
     fecha_pedido date NOT NULL,
     CONSTRAINT FK_Cliente FOREIGN KEY(id_cliente)
     REFERENCES Clientes (id_cliente),
