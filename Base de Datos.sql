@@ -44,6 +44,14 @@ CREATE TABLE Clientes (
     email VARCHAR(100) UNIQUE
 );
 
+CREATE TABLE FACTURAS (
+	id_factura INT PRIMARY KEY,
+    total INT NOT NULL,
+    CONSTRAINT FK_Cliente FOREIGN KEY (id_cliente)
+    REFERENCES Clientes (id_cliente)
+    ON DELETE CASCADE ON UPDATE CASCADE
+);
+
 CREATE TABLE Empleados (
     id_empleado INT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
