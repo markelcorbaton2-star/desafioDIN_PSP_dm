@@ -53,7 +53,18 @@ CREATE TABLE FACTURAS (
 );
 
 CREATE TABLE Empleados (
-    id_empleado INT PRIMARY KEY,
+    id_empleado INT PRIMARY KEY auto_increment,
     nombre VARCHAR(100) NOT NULL,
-    puesto VARCHAR(50) NOT NULL
+    puesto VARCHAR(50) NOT NULL,
+    CONSTRAINT FK_Plato FOREIGN KEY (id_plato)
+    REFERENCES Platos (id_plato)
+);
+
+CREATE TABLE Pedidos (
+	id_pedido INT PRIMARY KEY auto_increment,
+    fecha_pedido date NOT NULL,
+    CONSTRAINT FK_Cliente FOREIGN KEY(id_cliente)
+    REFERENCES Clientes (id_cliente),
+    CONSTRAINT FK_Plato FOREIGN KEY(id_plato)
+    REFERENCES Platos (id_plato)
 );
