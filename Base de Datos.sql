@@ -45,28 +45,34 @@ CREATE TABLE Clientes (
 );
 
 CREATE TABLE FACTURAS (
-	id_factura INT PRIMARY KEY,
-    total INT NOT NULL,
-    CONSTRAINT FK_Cliente FOREIGN KEY (id_cliente)
-    REFERENCES Clientes (id_cliente)
-    ON DELETE CASCADE ON UPDATE CASCADE
+    id_factura INT PRIMARY KEY,
+    total DECIMAL(10,2) NOT NULL,
+    id_cliente INT NOT NULL,
+    CONSTRAINT FK_Factura_Cliente FOREIGN KEY (id_cliente)
+        REFERENCES Clientes (id_cliente)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE Empleados (
-    id_empleado INT PRIMARY KEY auto_increment,
+    id_empleado INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(100) NOT NULL,
     puesto VARCHAR(50) NOT NULL,
-    id_plato INT NOT NULL,
-    CONSTRAINT FK_Plato FOREIGN KEY (id_plato)
-    REFERENCES Platos (id_plato)
+    id_plato INT NULL,
+    CONSTRAINT FK_Empleado_Plato FOREIGN KEY (id_plato)
+        REFERENCES Platos (id_plato)
+        ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 CREATE TABLE Pedidos (
-	id_pedido INT PRIMARY KEY auto_increment,
+    id_pedido INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(100) NOT NULL,
-    fecha_pedido date NOT NULL,
-    CONSTRAINT FK_Cliente FOREIGN KEY(id_cliente)
-    REFERENCES Clientes (id_cliente),
-    CONSTRAINT FK_Plato FOREIGN KEY(id_plato)
-    REFERENCES Platos (id_plato)
+    fecha_pedido DATE NOT NULL,
+    id_cliente INT NOT NULL,
+    id_plato INT NOT NULL,
+    CONSTRAINT FK_Pedido_Cliente FOREIGN KEY (id_cliente)
+        REFERENCES Clientes (id_cliente)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT FK_Pedido_Plato FOREIGN KEY (id_plato)
+        REFERENCES Platos (id_plato)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );
