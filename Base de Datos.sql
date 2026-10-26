@@ -57,7 +57,7 @@ CREATE TABLE Empleados (
     id_empleado INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(100) NOT NULL,
     puesto VARCHAR(50) NOT NULL,
-    id_plato INT NULL,
+    id_plato INT NOT NULL,
     CONSTRAINT FK_Empleado_Plato FOREIGN KEY (id_plato)
         REFERENCES Platos (id_plato)
         ON DELETE SET NULL ON UPDATE CASCADE
