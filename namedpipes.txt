@@ -1,3 +1,17 @@
-App 1 (Gestión) gestiona platos, ingredientes, clientes, pedidos y facturas con el CRUD. Cuando creas un pedido, pulsa un botón tipo “Procesar pedido” y envía la solicitud por el tubo.
 
-App 2 (Cocina) recibe el pedido y hace cálculos internos, como pide el enunciado:
+
+APP 1 (cliente)                              APP 2 (servidor)
+                                             1. Crea el tubo "FacturacionPipe"
+                                             2. WaitForConnectionAsync → espera...
+
+1. Construye SolicitudFactura (objeto C#)
+2. Serialize → texto JSON
+3. ConnectAsync ──────────────────────────→ 3. Se conecta alguien, despierta
+4. WriteLineAsync(json) ──────────────────→ 4. ReadLineAsync → recibe el texto
+5. ReadLineAsync → espera...                5. Deserialize → objeto SolicitudFactura
+                                            6. Procesar: valida y calcula
+                                            7. Serialize → texto JSON de respuesta
+6. Recibe el texto ←──────────────────────  8. WriteLineAsync(jsonRespuesta)
+7. Deserialize → objeto RespuestaFactura
+8. Guarda en la tabla FACTURAS
+9. Cierra el tubo                           9. Cierra el tubo y vuelve al paso 1
