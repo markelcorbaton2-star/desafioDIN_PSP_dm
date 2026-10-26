@@ -1,0 +1,3 @@
+App 1 (Gestión) gestiona platos, ingredientes, clientes, pedidos y facturas con el CRUD. Cuando creas un pedido, pulsa un botón tipo “Procesar pedido” y envía la solicitud por el tubo.
+
+App 2 (Cocina) recibe el pedido y hace cálculos internos, como pide el enunciado:
