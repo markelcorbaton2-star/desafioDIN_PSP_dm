@@ -56,6 +56,7 @@ CREATE TABLE Empleados (
     id_empleado INT PRIMARY KEY auto_increment,
     nombre VARCHAR(100) NOT NULL,
     puesto VARCHAR(50) NOT NULL,
+    id_plato INT NOT NULL,
     CONSTRAINT FK_Plato FOREIGN KEY (id_plato)
     REFERENCES Platos (id_plato)
 );
