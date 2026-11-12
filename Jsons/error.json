@@ -1,0 +1,8 @@
+{
+  "idFactura": 1,
+  "idCliente": 1,
+  "idPedido": 1,
+  "estado": "Error de validación",
+  "campoError": "detalle[0].cantidad",
+  "detalleError": "La cantidad debe ser mayor que 0"
+}
